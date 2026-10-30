@@ -12,7 +12,7 @@ each chip, solves reading puzzles, and helps ARC remember.
 - Level 3, The Weather: numbers and the number sign.
 
 **All story text is a DRAFT.** It comes from
-`braille-puzzles/arc-adventure-script.md`.
+`../arc-adventure-script.md` (next to this folder).
 
 ## Run it
 
