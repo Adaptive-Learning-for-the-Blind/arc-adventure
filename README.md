@@ -17,10 +17,10 @@ each chip, solves reading puzzles, and helps ARC remember.
 ## Run it
 
 ```bash
-npm install
-npm run dev        # http://localhost:5173
-npm test           # puzzle rules, content rules, focus behavior
-npm run build      # type check + production build in dist/
+pnpm install
+pnpm run dev        # http://localhost:5173
+pnpm test           # puzzle rules, content rules, focus behavior
+pnpm run build      # type check + production build in dist/
 ```
 
 ## Editing the story (writers)
@@ -47,10 +47,10 @@ questions. Questions are asked one at a time. After each pick, ARC replies, and:
 
 **Lines.**
 
-- Aim for 20 characters or fewer per line. `npm test` lists longer lines as a warning.
+- Aim for 20 characters or fewer per line. `pnpm test` lists longer lines as a warning.
 - `{ before: 'It says: ', label: 'garden' }` marks a word the player reads. It shows in a box on screen. Screen readers read the whole line as plain text.
 - `correct` lists ARC's reply for each right pick, in order. `wrong` on a choice is ARC's reply for that choice. Anything missing uses the defaults in `arcAdventure.ts`.
-- Plain text only. `npm test` fails on Unicode braille characters and on "arc" not in all caps.
+- Plain text only. `pnpm test` fails on Unicode braille characters and on "arc" not in all caps.
 - Set `status: 'final'` in `arcAdventure.ts` to remove the "Draft text." notice.
 
 **Sound and art ids.** Each scene names an `art` id and can override the
@@ -99,7 +99,7 @@ The recording plays instead of the synth. If the file is missing or won't decode
 - **Choices are native `<button>`s** in a list, so screen readers say how many there are.
 - **Next appears only when the scene is done**, so there is one way forward.
 - **Level names** show under the heading on the first scene of each level.
-- **Art is decorative** (`aria-hidden="true"`). It only shows what the story text and sound already say, and never an answer (cards stay face down, no seed pictures, no sun or sea in level 1). Level 1 is picture-book art in `src/ui/art/` (flat colors, no outlines); levels 2 and 3 still use the older chalkboard art. `npm test` checks ARC and the cue shapes are 3:1 against what is behind them. Preview every scene at `/artPreview.html` while `npm run dev` runs.
+- **Art is decorative** (`aria-hidden="true"`). It only shows what the story text and sound already say, and never an answer (cards stay face down, no seed pictures, no sun or sea in level 1). Level 1 is picture-book art in `src/ui/art/` (flat colors, no outlines); levels 2 and 3 still use the older chalkboard art. `pnpm test` checks ARC and the cue shapes are 3:1 against what is behind them. Preview every scene at `/artPreview.html` while `pnpm run dev` runs.
 - **Motion** follows the sound: grass and tree sway and birds fly in the garden, the sky turns to evening during the crickets, the shed door opens with the creak, sprouts pop up and ARC's lights blink (3 times, under 2 a second) with the chime. With `prefers-reduced-motion: reduce` nothing moves and each picture shows its end state.
 - **Sound** starts only after the first click. It is quiet by default. Mute (`aria-pressed`) and a volume slider sit at the top of the page. Settings are saved in this browser.
 - **Placeholder audio.** All sound is synthesized with the Web Audio API for now. Recordings can replace any cue; see Sounds above.
@@ -145,7 +145,7 @@ These lines come from the script and are kept as written. They pan on a 20-cell 
 
 ## VoiceOver script (Safari, macOS)
 
-1. Run `npm run dev` and open the page in Safari. Press Cmd+F5 to turn on VoiceOver.
+1. Run `pnpm run dev` and open the page in Safari. Press Cmd+F5 to turn on VoiceOver.
 2. Expect "ARC Adventure, heading level 1" and a Start button. Press Start (VO+Space).
 3. Expect focus on "The Landing, heading level 1", then "Level 1: The Garden". Birds and breeze start.
 4. VO+Right through the story. "It says: garden" should read as one line. Then "What will you do here?" and a list of 3 buttons.
