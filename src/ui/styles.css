@@ -1,0 +1,405 @@
+/* High-contrast theme. Dark by default, light if the player's system asks for it. */
+:root {
+  --bg: #0b1622;
+  --text: #ffffff;
+  --button-bg: #ffd23f;
+  --button-text: #0b1622;
+  --focus: #ffffff;
+  --label-bg: #ffffff;
+  --label-text: #0b1622;
+  --good: #8ff08f;
+
+  --art-ink: #ffffff;
+  --art-metal: #3f6fb5;
+  --art-glow: #ffd23f;
+  --art-leaf: #49c449;
+  --art-soil: #8b5a2b;
+  --art-water: #4fc3ff;
+  --art-wood: #9c4f24;
+  --art-roof: #c0392b;
+  --art-paper: #f2f2f2;
+  --art-dark: #0b1622;
+  --art-sand: #e8c872;
+  --art-rock: #8a8f98;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --text: #000000;
+    --button-bg: #003a8c;
+    --button-text: #ffffff;
+    --focus: #000000;
+    --label-bg: #000000;
+    --label-text: #ffffff;
+    --good: #0a5c0a;
+    --art-ink: #000000;
+    --art-dark: #000000;
+    color-scheme: light;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.topBar,
+main,
+.footer {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Sound controls */
+.soundControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 0;
+  font-size: 1.125rem;
+}
+
+.soundLabel {
+  font-weight: 700;
+}
+
+.mute {
+  min-height: 44px;
+  padding: 0.25rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--text);
+  background: transparent;
+  border: 3px solid var(--text);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.mute[aria-pressed='true'] {
+  color: var(--button-text);
+  background: var(--text);
+}
+
+input[type='range'] {
+  width: 10rem;
+  min-height: 44px;
+  accent-color: var(--button-bg);
+}
+
+/* Scene */
+/* The picture keeps its shape and shrinks to stay under 38% of the
+   screen height, so the text and buttons stay in view. */
+.art svg {
+  display: block;
+  width: min(100%, 38vh * 1.6);
+  height: auto;
+  aspect-ratio: 8 / 5;
+  margin: 0.5rem auto;
+}
+
+.art svg.pictureBook {
+  border-radius: 1rem;
+  /* It is a picture: keep its own colors in Windows high contrast mode. */
+  forced-color-adjust: none;
+}
+
+h1 {
+  margin: 0.5rem 0;
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+h2 {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.story p,
+.puzzle p {
+  margin: 0.25rem 0;
+}
+
+/* A word the player reads, like a chip label. */
+.readLabel {
+  display: inline-block;
+  margin: 0.25rem 0;
+  padding: 0.1rem 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--label-text);
+  background: var(--label-bg);
+  border: 3px solid var(--text);
+  border-radius: 0.5rem;
+}
+
+.levelTitle {
+  font-weight: 700;
+}
+
+/* ARC's reply after a pick. */
+.feedback {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.feedback.right {
+  color: var(--good);
+}
+
+.prompt {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+button.choice,
+button.next {
+  min-width: 7rem;
+  min-height: 64px;
+  padding: 0.5rem 1.5rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--button-text);
+  background: var(--button-bg);
+  /* Transparent border shows up in Windows high contrast mode. */
+  border: 3px solid transparent;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+button.next {
+  display: block;
+  margin: 1.5rem 0 2rem;
+}
+
+:focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 4px;
+}
+
+[tabindex='-1']:focus {
+  outline: 3px dashed var(--focus);
+  outline-offset: 4px;
+}
+
+.footer {
+  padding-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Illustration colors */
+.art .ink {
+  stroke: var(--art-ink);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.art .metal { fill: var(--art-metal); }
+.art .glow { fill: var(--art-glow); }
+.art .leaf { fill: var(--art-leaf); }
+.art .soil { fill: var(--art-soil); }
+.art .water { fill: var(--art-water); }
+.art .wood { fill: var(--art-wood); }
+.art .roof { fill: var(--art-roof); }
+.art .paper { fill: var(--art-paper); }
+.art .dark { fill: var(--art-dark); }
+.art .dot { fill: var(--art-dark); }
+.art .sand { fill: var(--art-sand); }
+.art .rock { fill: var(--art-rock); }
+.art .leafStroke { stroke: var(--art-leaf); }
+.art .waterStroke { stroke: var(--art-water); }
+.art .digit {
+  fill: var(--art-dark);
+  font: 700 40px system-ui, sans-serif;
+}
+
+/* Gentle motion. Turned off below for players who ask for less motion. */
+.art .eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 5s infinite;
+}
+
+.art .light {
+  animation: glow 3s infinite;
+}
+
+.art .grow {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: grow 2s ease-out both;
+}
+
+/* Picture-book art (src/ui/art). Every moving piece rests in its final
+   state, so with reduced motion the picture simply shows the end:
+   the door open, the sprouts up, the evening sky, ARC's lights lit. */
+
+/* Garden ambience: breeze, birds, leaves. */
+.art .sway,
+.art .swayTree,
+.art .sproutGrow,
+.art .shedDoor,
+.art .arcBlink,
+.art .arcWave {
+  transform-box: fill-box;
+}
+
+.art .sway {
+  transform-origin: 50% 100%;
+  animation: sway 4.5s ease-in-out infinite alternate;
+}
+
+.art .swayTree {
+  transform-origin: 50% 100%;
+  animation: sway 7s ease-in-out infinite alternate;
+}
+
+.art .drift {
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+.art .flyBy {
+  animation: flyBy 22s linear infinite;
+}
+
+/* Waiting ambience: crickets and a slow clock. Evening comes. */
+.art .nightfall {
+  animation: fadeIn 9s ease-in-out 1s both;
+}
+
+.art .moonRise {
+  animation: rise 9s ease-out 1s both;
+}
+
+.art .twinkle {
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+/* Creaky door cue: the shed door swings open on its hinge. */
+.art .shedDoor {
+  transform-origin: 0% 50%;
+  transform: scaleX(-0.3);
+  animation: doorOpen 1.3s ease-in-out 0.1s both;
+}
+
+/* Chime cue: sprouts pop up. */
+.art .sproutGrow {
+  transform-origin: 50% 100%;
+  animation: sproutUp 0.9s cubic-bezier(0.3, 1.5, 0.6, 1) both;
+}
+
+/* ARC */
+.art .arcBlink {
+  transform-origin: center;
+  animation: blink 6s infinite;
+}
+
+.art .arcWave {
+  transform-origin: 0% 100%;
+  animation: wave 0.6s ease-in-out 4 alternate;
+}
+
+/* "ARC's lights blink": three blinks, under 2 a second, then lit. */
+.art .arcLightBlink {
+  animation: lightBlink 0.6s step-end 0.3s 3;
+}
+
+@keyframes sway {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(3deg); }
+}
+
+@keyframes drift {
+  from { transform: translateX(-8px); }
+  to { transform: translateX(8px); }
+}
+
+@keyframes flyBy {
+  0% { transform: translate(-160px, 12px); }
+  55%, 100% { transform: translate(230px, -8px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+}
+
+@keyframes rise {
+  from { transform: translateY(18px); }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.45; }
+}
+
+@keyframes doorOpen {
+  from { transform: scaleX(1); }
+}
+
+@keyframes sproutUp {
+  from { transform: scale(0); }
+}
+
+@keyframes wave {
+  from { transform: rotate(-10deg); }
+  to { transform: rotate(10deg); }
+}
+
+@keyframes lightBlink {
+  0% { fill: var(--arcLightOff); }
+  50% { fill: var(--arcLightOn); }
+}
+
+@keyframes blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .art .ink { stroke: CanvasText; }
+  .readLabel { border-color: CanvasText; }
+}
