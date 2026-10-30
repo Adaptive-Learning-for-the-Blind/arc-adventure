@@ -35,6 +35,7 @@ const pairs: Array<[string, PaletteName, PaletteName[]]> = [
   ['shed door', 'shedDoor', ['shedWall', 'grass']],
   ['sprouts', 'sprout', ['soil']],
   ['moon', 'moon', ['duskHigh']],
+  ['ship', 'ship', ['sky', 'hillFar', 'hill', 'grass']],
 ];
 
 describe('art contrast', () => {

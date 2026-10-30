@@ -62,12 +62,12 @@ export const palette = {
   shedInside: '#3b2a1e',
   shedWindow: '#9fd2e3',
   seedBox: '#d98c3f',
-  ship: '#ffffff',
-  shipShade: '#dfe3f2',
-  shipWindow: '#4f7fbf',
+  ship: '#4b515c',
+  shipShade: '#3c414a',
+  shipWindow: '#bfe3f7',
   shipStripe: '#e8664a',
-  shipRamp: '#9aa0bd',
-  shipInside: '#3a3f5c',
+  shipRamp: '#8b919e',
+  shipInside: '#ffe3a3',
   shadow: '#000000',
 } as const;
 
