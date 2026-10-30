@@ -6,7 +6,7 @@
 
 export const palette = {
   // Sky and weather
-  sky: '#d4f0fb',
+  sky: '#5aaee0',
   cloud: '#ffffff',
   duskHigh: '#6a63ad',
   duskMiddle: '#c6b6e4',
@@ -32,9 +32,9 @@ export const palette = {
   flowerMiddle: '#ffd23f',
 
   // ARC: weathered orange paint with a teal repair patch
-  arcPaint: '#a23d1a',
-  arcPaintDark: '#7a2c12',
-  arcRust: '#5e220d',
+  arcPaint: '#8e3314',
+  arcPaintDark: '#6a2610',
+  arcRust: '#4f1c0a',
   arcPatch: '#2f7f7a',
   arcScreen: '#1e2a3a',
   arcEye: '#e9fbff',
@@ -48,7 +48,7 @@ export const palette = {
   lampGlow: '#fbe7a1',
 
   // Things in the garden
-  chip: '#1f6b4a',
+  chip: '#185c3f',
   chipGold: '#ffd23f',
   chipLabel: '#f6e7c8',
   cardBack: '#2c3e66',
@@ -62,8 +62,8 @@ export const palette = {
   shedInside: '#3b2a1e',
   shedWindow: '#9fd2e3',
   seedBox: '#d98c3f',
-  ship: '#eef0f6',
-  shipShade: '#c9cde6',
+  ship: '#ffffff',
+  shipShade: '#dfe3f2',
   shipWindow: '#4f7fbf',
   shipStripe: '#e8664a',
   shipRamp: '#9aa0bd',
