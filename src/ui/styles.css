@@ -108,6 +108,29 @@ input[type='range'] {
   margin: 0.5rem auto;
 }
 
+/* Phones and 200% zoom: the picture stays at the top while the words
+   scroll under it. The page itself still scrolls, so screen readers
+   and zoom work as normal. */
+@media (width < 60rem) {
+  .art {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 0.5rem 0;
+    background: var(--bg);
+  }
+
+  .art svg {
+    margin: 0 auto;
+  }
+
+  /* When focus moves to a line, scroll it to just below the picture so
+     the picture never covers it. Picture height = its width / 1.6. */
+  html {
+    scroll-padding-top: calc(min(min(100vw, 40rem) - 32px, 38vh * 1.6) / 1.6 + 1.5rem);
+  }
+}
+
 /* Wide screens: picture on the left (70%), words and buttons on the
    right (30%). The breakpoint keeps the right column wide enough for
    the buttons at this text size; narrower screens and 200% zoom stack.

@@ -134,6 +134,7 @@ export const level1Garden: Level = {
         {
           kind: 'pickAll',
           prompt: ['"While we wait,', 'let us help it grow.', 'What do seeds need?', 'Pick three."'],
+          nextPrompt: ['"Pick another one."'],
           choices: [
             { id: 'sun', label: 'sun' },
             { id: 'rock', label: 'rock', wrong: ['"A rock? Seeds can', 'not eat rocks!"'] },

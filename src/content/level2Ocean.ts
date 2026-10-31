@@ -86,6 +86,7 @@ export const level2Ocean: Level = {
         {
           kind: 'pickAll',
           prompt: ['"Let us help my', 'memory. What will', 'you find in the sea?', 'Pick three."'],
+          nextPrompt: ['"Pick another one."'],
           choices: [
             { id: 'fish', label: 'fish' },
             { id: 'crab', label: 'crab' },

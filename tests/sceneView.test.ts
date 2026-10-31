@@ -84,6 +84,18 @@ describe('SceneView', () => {
     expect(focused()).toBe('"Candy? Oh my.');
   });
 
+  it('asks for another pick until all three are found', () => {
+    press('Start', 'Plant seeds', 'Next', 'bean', 'pea', 'corn', 'Next');
+    press('dig', 'plant', 'water', 'wait', 'Next', 'Next', 'sun');
+    expect(focused()).toBe('"Yes!"');
+    expect(root.querySelector('.prompt')?.textContent).toBe('"Pick another one."');
+    press('water');
+    expect(root.querySelector('.prompt')?.textContent).toBe('"Pick another one."');
+    press('soil');
+    expect(focused()).toBe('"That is all three!"');
+    expect(root.querySelector('.prompt')).toBeNull();
+  });
+
   it('removes picked cards and asks what is next', () => {
     press('Start', 'Plant seeds', 'Next', 'bean', 'pea', 'corn', 'Next', 'dig');
     expect(focused()).toBe('"Dig! Of course!"');
