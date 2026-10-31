@@ -19,7 +19,7 @@ import { level2Ocean } from './level2Ocean';
 import { level3Weather } from './level3Weather';
 
 export const arcAdventure: GameContent = {
-  status: 'draft',
+  status: 'final',
   title: 'ARC Adventure',
   shuffleChoices: true,
 

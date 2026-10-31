@@ -34,10 +34,12 @@ export class SceneView {
 
     this.root.replaceChildren(
       art,
-      heading,
-      ...(screen.levelTitle ? [el('p', { class: 'levelTitle' }, [screen.levelTitle])] : []),
-      el('div', { class: 'story' }, screen.lines.map(storyLine)),
-      this.questionRegion,
+      el('div', { class: 'sceneText' }, [
+        heading,
+        ...(screen.levelTitle ? [el('p', { class: 'levelTitle' }, [screen.levelTitle])] : []),
+        el('div', { class: 'story' }, screen.lines.map(storyLine)),
+        this.questionRegion,
+      ]),
     );
     this.renderQuestion(screen);
     if (moveFocus) heading.focus();
