@@ -23,16 +23,20 @@ const gardenBehindArc: PaletteName[] = [
   'duskMiddle', 'duskLow', 'cloudDusk', 'hillFarDusk', 'hillDusk', 'grassDusk',
 ];
 
+// ARC's pale paint can't reach 3:1 against both the blue sky and the pale
+// hills, so its shape is carried by the parts that do: the slate shadow
+// side of its head and body, its lenses, treads, and spring arms.
 const pairs: Array<[string, PaletteName, PaletteName[]]> = [
-  ['ARC body', 'arcPaint', gardenBehindArc],
-  ['ARC arms', 'arcPaintDark', gardenBehindArc],
+  ['ARC shadow side', 'arcShade', gardenBehindArc],
+  ['ARC spring arms', 'arcSpring', gardenBehindArc],
   ['ARC treads and hands', 'arcTread', gardenBehindArc],
-  ['ARC face screen on its body', 'arcScreen', ['arcPanel']],
-  ['ARC lit lights on its panel and screen', 'arcLightOn', ['arcScreen', 'arcPaint']],
+  ['ARC lenses on its paint', 'arcScreen', ['arcPaint', 'arcPaintDark']],
+  ['ARC eyes in their lenses', 'arcEye', ['arcScreen']],
+  ['ARC lights when lit, against their mounts and when dim', 'arcLightOn', ['arcScreen', 'arcLightOff']],
   ['held chip', 'chip', ['sky', 'cloud', 'hillFar']],
   ['dropped cards', 'cardBack', ['grass', 'hill']],
   ['open shed doorway', 'shedInside', ['shedWall']],
-  ['shed door', 'shedDoor', ['shedWall', 'grass']],
+  ['shed door, which opens across the shed wall', 'shedDoor', ['shedWall']],
   ['sprouts', 'sprout', ['soil']],
   ['moon', 'moon', ['duskHigh']],
   ['ship', 'ship', ['sky', 'hillFar', 'hill', 'grass']],
