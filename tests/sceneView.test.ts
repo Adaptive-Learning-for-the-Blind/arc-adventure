@@ -55,6 +55,17 @@ describe('SceneView', () => {
     expect(root.querySelector('.art')?.getAttribute('aria-hidden')).toBe('true');
   });
 
+  it('keeps the markup flat: one heading, no lists, no extra roles', () => {
+    press('Start');
+    expect(root.querySelectorAll('h1, h2, h3, h4, h5, h6')).toHaveLength(1);
+    expect(root.querySelectorAll('ul, ol, li, section, article, header, footer, nav, aside')).toHaveLength(0);
+    expect(root.querySelectorAll('[role], [aria-label], [aria-describedby], [aria-roledescription], [aria-live]')).toHaveLength(0);
+    root.querySelectorAll('.story > *').forEach((line) => expect(line.tagName).toBe('P'));
+    const choices = [...root.querySelector('.choices')!.children];
+    expect(choices).toHaveLength(3);
+    choices.forEach((child) => expect(child.tagName).toBe('BUTTON'));
+  });
+
   it('focuses ARC\'s reply, repeats the question after a wrong pick, and hides Next until solved', () => {
     press('Start');
     expect(buttons(root).some((b) => b.textContent === 'Next')).toBe(false);

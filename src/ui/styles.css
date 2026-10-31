@@ -74,10 +74,6 @@ main,
   font-size: 1.125rem;
 }
 
-.soundLabel {
-  font-weight: 700;
-}
-
 .mute {
   min-height: 44px;
   padding: 0.25rem 1rem;
@@ -181,6 +177,88 @@ input[type='range'] {
   .footer {
     max-width: 90rem;
   }
+
+  /* Title screen: sound controls across the top, the picture at full
+     width below, and the title and Start button centered in the band
+     of open sky above ARC's antenna (the top 29% of the picture). */
+  .layout:has(> main.cover) > .topBar {
+    grid-column: 1 / -1;
+  }
+
+  /* Full width, unless that would make the picture taller than the
+     window: then it fits the height and sits in the middle. */
+  main.cover {
+    grid-row: 2;
+    grid-template-columns: min(100%, (100vh - 6rem) * 1.6);
+    grid-template-rows: auto;
+    justify-content: center;
+  }
+
+  main.cover > * {
+    grid-area: 1 / 1;
+  }
+
+  main.cover .art svg {
+    width: 100%;
+  }
+
+  /* As wide as the picture, so the sizes below can use cqi (1% of the
+     picture's width) and always fit in the sky above ARC. */
+  main.cover .sceneText {
+    align-self: start;
+    justify-self: stretch;
+    container-type: inline-size;
+    contain: none;
+    overflow: visible;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* The text sits on the picture, so its colors are fixed rather than
+     following the light/dark theme. A thick navy outline is the backing
+     for the white letters (navy on white is 18:1), so it reads on any
+     part of the sky. */
+  main.cover h1 {
+    /* Shrink-wrapped so the tilt turns the words, not a full-width box. */
+    width: fit-content;
+    margin: 2.5cqi auto 0;
+    font-family: ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', 'Nunito', system-ui, sans-serif;
+    font-size: max(2.5rem, 6.5cqi);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    -webkit-text-stroke: 0.18em #0b1622;
+    paint-order: stroke fill;
+    text-shadow: 0 0.1em 0 #0b1622;
+    transform: rotate(-3deg);
+  }
+
+  /* Yellow with navy text and a navy edge, styled like the title. */
+  main.cover .next {
+    margin: 1.5cqi auto 0;
+    padding: 0.25rem 2.5rem;
+    font-size: max(1.5rem, 2.6cqi);
+    color: #0b1622;
+    background: #ffd23f;
+    border: 4px solid #0b1622;
+    border-radius: 999px;
+    box-shadow: 0 6px 0 #0b1622;
+  }
+
+  main.cover .next:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #0b1622;
+  }
+}
+
+/* Windows high contrast mode drops the outline, so give the title text
+   a solid backing there. */
+@media (forced-colors: active) {
+  main.cover .sceneText {
+    padding: 0.5rem 1rem;
+    background: Canvas;
+  }
 }
 
 .art svg.pictureBook {
@@ -219,10 +297,6 @@ h2 {
   border-radius: 0.5rem;
 }
 
-.levelTitle {
-  font-weight: 700;
-}
-
 /* ARC's reply after a pick. */
 .feedback {
   margin-top: 1rem;
@@ -245,8 +319,6 @@ h2 {
   gap: 1rem;
   max-width: 22rem;
   margin: 1rem 0;
-  padding: 0;
-  list-style: none;
 }
 
 button.choice,

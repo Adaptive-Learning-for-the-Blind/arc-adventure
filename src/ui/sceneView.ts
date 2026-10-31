@@ -32,6 +32,9 @@ export class SceneView {
     const heading = el('h1', { tabindex: '-1' }, [screen.heading]);
     this.questionRegion = el('div', { class: 'question' });
 
+    // The title screen is a cover: the picture fills the page and the
+    // title and Start button sit on top of it (wide screens only).
+    this.root.classList.toggle('cover', screen.art === 'title');
     this.root.replaceChildren(
       art,
       el('div', { class: 'sceneText' }, [
@@ -61,15 +64,17 @@ export class SceneView {
     this.questionRegion.replaceChildren(
       ...(feedback.length ? [el('div', { class: `feedback ${screen.feedback!.kind}` }, feedback)] : []),
       ...(screen.prompt ? [el('div', { class: 'prompt' }, screen.prompt.map(storyLine))] : []),
+      // Plain buttons in a plain <div>: no list role for the screen
+      // reader to call out before each set of choices.
       ...(screen.choices
         ? [
             el(
-              'ul',
+              'div',
               { class: 'choices' },
               screen.choices.map((choice) => {
                 const button = el('button', { type: 'button', class: 'choice' }, [choice.label]);
                 button.addEventListener('click', () => this.actions.choose(choice.id));
-                return el('li', {}, [button]);
+                return button;
               }),
             ),
           ]

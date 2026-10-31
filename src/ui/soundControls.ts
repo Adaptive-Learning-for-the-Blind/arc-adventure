@@ -23,9 +23,11 @@ export function mountSoundControls(root: HTMLElement, ui: UiText, settings: Soun
     handlers.onVolumeChange(Number(volume.value) / 100);
   });
 
+  // No group role: "Mute" and "Volume" name themselves, so the screen
+  // reader does not need a "Sound, group" callout first.
   root.replaceChildren(
-    el('div', { role: 'group', 'aria-labelledby': 'soundLabel', class: 'soundControls' }, [
-      el('span', { id: 'soundLabel', class: 'soundLabel' }, [ui.soundGroup]),
+    el('div', { class: 'soundControls' }, [
+      el('span', { class: 'soundLabel' }, [ui.soundGroup]),
       mute,
       el('label', { for: 'volume' }, [ui.volume]),
       volume,
